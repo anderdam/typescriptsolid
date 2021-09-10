@@ -23,7 +23,9 @@ export class Order {
         }
 
         this._orderStatus = 'closed';
-        this.messaging.sendMessage(`Your request was received, total value: $${this.cart.total()}`);
+        this.messaging.sendMessage(
+            `Your request was received, total value: $${this.cart.totalWithDiscount()}`,
+        );
         this.persistence.saveOrder();
         this.cart.clear();
     }
